@@ -3,17 +3,7 @@
 
 name: Python build
 
-on:
-  push:
-    branches:
-      - master
-      - 2.4
-    paths:
-      - '**.py'
-  pull_request:
-    branches:
-      - master
-  workflow_dispatch:
+on: push
 
 jobs:
   build:
@@ -25,18 +15,18 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         python-version:
-          - "3.8"
-          - "3.9"
-          - "3.10"
-          - "3.11"
-          - "3.12"
+        - '3.8'
+        - '3.9'
+        - '3.10'
+        - '3.11'
+        - '3.12'
         exclude:
-          - os: windows-latest
-            python-version: "3.11"
-          - os: windows-latest
-            python-version: "3.9"
-          - os: windows-latest
-            python-version: "3.8"
+        - os: windows-latest
+          python-version: '3.11'
+        - os: windows-latest
+          python-version: '3.9'
+        - os: windows-latest
+          python-version: '3.8'
 
     steps:
     - uses: actions/checkout@v4
